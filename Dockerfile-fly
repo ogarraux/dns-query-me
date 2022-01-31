@@ -1,0 +1,12 @@
+FROM python:3.9.10-slim
+
+RUN apt update
+RUN apt install -y git
+COPY requirements.txt /
+RUN pip install -r requirements.txt
+RUN mkdir /app
+COPY dns.py /app
+COPY fly-start.sh /app
+WORKDIR /app
+ENTRYPOINT ["/bin/sh", "./fly-start.sh"]
+EXPOSE 53/udp
