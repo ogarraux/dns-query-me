@@ -24,8 +24,11 @@ Alternatively, to deply to the Fly.io service, see next section.
 This creates a new application on Fly.io.  We explicitly specify the Dockerfile to use, since there's (more on that below).  And we force it to build the docker image locally on your machine, since I saw errors pulling from Docker Hub when letting it build on Fly.io.
 3. flyctl will then prompt you for a few settings.  A template fly.toml configuration file is included (it specifies the port to listen on, since that's not default).  So choose yes when asked `? Would you like to copy its configuration to the new app? Yes`.
 4. The Docker image will be built locally, and then deployed on fly.io.  If all goes well, at the end you should see: 
-```1 desired, 1 placed, 1 healthy, 0 unhealthy
---> v0 deployed successfully```
+```
+1 desired, 1 placed, 1 healthy, 0 unhealthy
+--> v0 deployed successfully
+```
+
 5. Query your service.  `dig @name-of-your-application.fly.dev myip2.example.com`.  This queries your fly.io container for 'myip2.example.com' - which is set as the FQDN to respond to in the template fly.toml configuration file.
 
 
