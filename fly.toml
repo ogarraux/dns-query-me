@@ -1,0 +1,19 @@
+kill_signal = "SIGINT"
+kill_timeout = 5
+processes = []
+
+[build]
+  dockerfile = "Dockerfile-fly"
+
+[env]
+  DNS_ANSWER_FOR = "myip2.example.com"
+
+[experimental]
+  auto_rollback = true
+
+[[services]]
+  internal_port = 53
+  protocol = "udp"
+
+  [[services.ports]]
+    port = 53
